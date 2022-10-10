@@ -12,14 +12,13 @@
 }
 .boardCell{
     background-color: white;
-    cursor:grab;
 }
 .boardCell:hover{
     background-color: lightgrey;
 }
 .unfilled{
-    
+    cursor:grab;
 }
 .filled{
-
+    pointer-events: none;
 }

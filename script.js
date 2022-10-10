@@ -60,7 +60,17 @@ const gameFlow = (() =>{
 })()
 
 const displayBoard = (()=>{
-    
+    //not sure if this really requires being inside this module...
+     const emptyCells=document.querySelectorAll('.unfilled')
+     emptyCells.forEach((cell)=>{
+        cell.addEventListener('click',()=>{
+            cell.textContent=gameFlow.symbol()
+            gameFlow.changePlayer()
+            cell.classList.remove('unfilled')
+            cell.classList.add()
+        })
+     })
+   
 
-})
+})()
 
