@@ -30,7 +30,7 @@ const gameBoard = (() =>{
             console.log('tie!')
         }
     }
-    
+
     return{
         erase,
         write,
@@ -39,4 +39,28 @@ const gameBoard = (() =>{
     }
 })()
 
+const gameFlow = (() =>{
+    let currentPlayer = 'X'
+
+    const symbol = () => currentPlayer
+
+    const changePlayer =() =>{
+        if (currentPlayer == 'X'){
+            currentPlayer = 'O'
+            console.log(currentPlayer)
+        }else{
+            currentPlayer='X'
+            console.log(currentPlayer)
+        }
+    }
+    return{
+        changePlayer,
+        symbol
+    }  
+})()
+
+const displayBoard = (()=>{
+    
+
+})
 

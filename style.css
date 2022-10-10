@@ -1,0 +1,25 @@
+
+#boardBackground{
+    display:grid;
+    background-color: darkcyan;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows:repeat(3,1fr);
+    height:500px;
+    width:500px;
+    gap:5px;
+    margin:50px auto;
+
+}
+.boardCell{
+    background-color: white;
+    cursor:grab;
+}
+.boardCell:hover{
+    background-color: lightgrey;
+}
+.unfilled{
+    
+}
+.filled{
+
+}
