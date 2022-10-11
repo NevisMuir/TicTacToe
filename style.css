@@ -27,3 +27,19 @@
 .filled{
     pointer-events: none;
 }
+#endgame{
+    z-index: 2;
+    margin:100px, auto;
+}
+#cover{
+    height:100%;
+    width:100%;
+    background: darkslategrey;
+    opacity:50%;
+    position:absolute;
+    top:0;
+    z-index:1;
+}
+.hidden{
+    display:none;
+}

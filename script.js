@@ -22,6 +22,7 @@ const gameBoard = (() =>{
             array[6]==array[4]&& array[4]==array[2]||
             array[0]==array[4]&& array[4]==array[8]
             )return true
+            
         }
         //tie case, array is full of strings and contains no numbers
         //but there is no winner     
@@ -47,18 +48,16 @@ const gameFlow = (() =>{
         gameBoard.write(displayBoard.cellNum())
         //win case
         if(gameBoard.checkWin()){
-            alert(currentPlayer+" wins!")
+            displayBoard.endGame(currentPlayer+" wins!")
             currentPlayer = 'X'
             gameBoard.reset()
-            displayBoard.reset()
             return
         }
         //tie case
         if(gameBoard.checkTie()){
-            alert("It's a tie!")
+            displayBoard.endGame("It's a tie!")
             currentPlayer = 'X'
             gameBoard.reset()
-            displayBoard.reset()
             return
         }
         changePlayer()
@@ -80,6 +79,7 @@ const gameFlow = (() =>{
 const displayBoard = (()=>{
      const emptyCells=document.querySelectorAll('.unfilled')
      let currentCell
+     const endDisplay = document.querySelector('#cover')
      const cellNum = ()=> currentCell
     //prints x or o on cell, intiates turn
      emptyCells.forEach((cell)=>{
@@ -100,9 +100,20 @@ const displayBoard = (()=>{
             cell.classList.add('unfilled')
         })
      }
+     const newGameButton=document.querySelector('button')
+     const endText=document.querySelector('#endgame>p')
+     newGameButton.addEventListener('click',()=>{
+        reset()
+        endDisplay.classList.add('hidden')
+     })
+     const endGame = (text) =>{
+        endText.textContent=text
+        endDisplay.classList.remove("hidden")
+     }
+
      return{
-        reset,
-        cellNum
+        cellNum,
+        endGame
      }
 })()
 
