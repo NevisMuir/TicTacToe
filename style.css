@@ -11,7 +11,12 @@
 
 }
 .boardCell{
+    display:grid;
     background-color: white;
+    justify-items:center;
+    align-items: center;
+    font-size:100px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .boardCell:hover{
     background-color: lightgrey;
