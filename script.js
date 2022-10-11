@@ -107,6 +107,7 @@ const displayBoard = (()=>{
      newGameButton.addEventListener('click',()=>{
         reset()
         endDisplay.forEach((display)=>{
+            display.classList.remove('shown')
             display.classList.add('hidden')
         })
 
@@ -116,6 +117,7 @@ const displayBoard = (()=>{
         
         endDisplay.forEach((display)=>{
             display.classList.remove('hidden')
+            display.classList.add('shown')
         })
      }
 

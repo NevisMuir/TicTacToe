@@ -40,6 +40,18 @@
     left: 50%;
     transform: translate(-50%);
     border-radius:30px;
+    padding:25px 150px;
+    justify-content:center;
+    align-items: center;
+}
+#endgame>p{
+    font-size:75px;
+}
+#endgame>button{
+    height:75px;
+    width:150px;
+    margin:auto;
+    font-size:25px;
 }
 #cover{
     height:100%;
@@ -49,4 +61,7 @@
     position:absolute;
     top:0;
     z-index:1;
+}
+.shown{
+    display:grid;
 }
