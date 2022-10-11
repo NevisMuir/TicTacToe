@@ -2,7 +2,6 @@ const gameBoard = (() =>{
     let array=[0,1,2,3,4,5,6,7,8]
     //gameBoard.reset resets game array
     const reset = () =>{
-        displayBoard.reset()
         for(let i=0;i<=8;i++){
             array.splice(i,1,i)
         }
@@ -22,24 +21,20 @@ const gameBoard = (() =>{
             array[2]==array[5]&& array[5]==array[8]||
             array[6]==array[4]&& array[4]==array[2]||
             array[0]==array[4]&& array[4]==array[8]
-            ){
-                console.log("winner!")
-                reset()
-                return
-            }
+            )return true
+        }
         //tie case, array is full of strings and contains no numbers
         //but there is no winner     
-        if(array.every(isNaN)){
-            console.log('tie!')
-            reset()
-            return
+    const checkTie = () =>{if(array.every(isNaN)){
+            return true
         }
     }
 
     return{
         reset,
         write,
-        checkWin
+        checkWin,
+        checkTie
     }
 })()
 
@@ -50,17 +45,30 @@ const gameFlow = (() =>{
 
     const turn = () =>{
         gameBoard.write(displayBoard.cellNum())
+        //win case
+        if(gameBoard.checkWin()){
+            alert(currentPlayer+" wins!")
+            currentPlayer = 'X'
+            gameBoard.reset()
+            displayBoard.reset()
+            return
+        }
+        //tie case
+        if(gameBoard.checkTie()){
+            alert("It's a tie!")
+            currentPlayer = 'X'
+            gameBoard.reset()
+            displayBoard.reset()
+            return
+        }
         changePlayer()
-        gameBoard.checkWin()
     }
 
     const changePlayer =() =>{
         if (currentPlayer == 'X'){
             currentPlayer = 'O'
-            console.log(currentPlayer)
         }else{
             currentPlayer='X'
-            console.log(currentPlayer)
         }
     }
     return{
@@ -83,9 +91,7 @@ const displayBoard = (()=>{
             gameFlow.turn()
         })
      })
-     //the above might make more sense in gameFlow? Since it's the action the player takes...
-     //idk, makes sense here to me
-     
+
      //displayBoard.reset erases board
      const reset = () =>{
         document.querySelectorAll('.boardCell').forEach((cell)=>cell.textContent="")
@@ -98,8 +104,5 @@ const displayBoard = (()=>{
         reset,
         cellNum
      }
-
-   
-
 })()
 
