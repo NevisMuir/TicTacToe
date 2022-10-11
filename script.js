@@ -79,7 +79,7 @@ const gameFlow = (() =>{
 const displayBoard = (()=>{
      const emptyCells=document.querySelectorAll('.unfilled')
      let currentCell
-     const endDisplay = document.querySelector('#cover')
+     
      const cellNum = ()=> currentCell
     //prints x or o on cell, intiates turn
      emptyCells.forEach((cell)=>{
@@ -102,13 +102,21 @@ const displayBoard = (()=>{
      }
      const newGameButton=document.querySelector('button')
      const endText=document.querySelector('#endgame>p')
+     const endDisplay = document.querySelectorAll('.hidden')
+
      newGameButton.addEventListener('click',()=>{
         reset()
-        endDisplay.classList.add('hidden')
+        endDisplay.forEach((display)=>{
+            display.classList.add('hidden')
+        })
+
      })
      const endGame = (text) =>{
         endText.textContent=text
-        endDisplay.classList.remove("hidden")
+        
+        endDisplay.forEach((display)=>{
+            display.classList.remove('hidden')
+        })
      }
 
      return{
