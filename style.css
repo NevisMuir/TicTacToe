@@ -67,3 +67,27 @@
     z-index:1;
     min-width: 400px;
 }
+
+#welcome-page{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    min-width: 350px;
+    max-width:500px;
+    border:solid black 3px;
+    border-radius: 50px;
+    margin:0 auto;
+}
+#welcome-page>h1{
+    grid-column:1/3;
+    justify-self: center;
+}
+#welcome-page>p{
+    grid-column:2/3;
+    justify-self: center;
+    color:red;
+}
+.welcome-button{
+    grid-row: 2/3;
+    width:150px;
+    justify-self: center;
+}

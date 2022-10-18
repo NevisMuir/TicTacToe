@@ -114,10 +114,8 @@ const displayBoard = (()=>{
      })
      const endGame = (text) =>{
         endText.textContent=text
-        
         endDisplay.forEach((display)=>{
             display.classList.remove('hidden')
-            
         })
      }
 
@@ -125,5 +123,13 @@ const displayBoard = (()=>{
         cellNum,
         endGame
      }
+})()
+
+
+const welcomePage = (()=>{
+    
+
+
+
 })()
 
