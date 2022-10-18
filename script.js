@@ -127,7 +127,49 @@ const displayBoard = (()=>{
 
 
 const welcomePage = (()=>{
-    
+    let playerButton = document.createElement('button')
+    playerButton.setAttribute("id","player-button")
+
+    let cpuButton = document.createElement('button')
+        cpuButton.setAttribute("id","cpu-button")
+
+
+    const create = ()=>{
+        let body = document.querySelector('body');
+        let page = document.createElement('div')
+        page.setAttribute("id","welcome-page")
+        body.appendChild(page)
+
+        let h1 = document.createElement('h1')
+        h1.textContent = "Let's Play Tic Tac Toe!"
+        page.appendChild(h1)       
+        page.appendChild(playerButton)
+        page.appendChild(cpuButton)
+
+        let soon=document.createElement('p')
+        soon.textContent = "coming soon!"
+        page.appendChild(soon)
+
+        let p1 = document.createElement('p')
+        let p2 = document.createElement('p')
+        let p3= document.createElement('p')
+        p1.textContent = "Player"
+        p2.textContent = "Vs."
+        p3.textContent = "Player";
+        let c1 = document.createElement('p')
+        let c2 = document.createElement('p')
+        let c3= document.createElement('p')
+        c1.textContent = "Player"
+        c2.textContent = "Vs."
+        c3.textContent = "CPU";
+        playerButton.appendChild(p1);
+        playerButton.appendChild(p2);
+        playerButton.appendChild(p3);
+        cpuButton.appendChild(c1);
+        cpuButton.appendChild(c2);
+        cpuButton.appendChild(c3);
+    }
+return{create,}
 
 
 

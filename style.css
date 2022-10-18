@@ -86,7 +86,7 @@
     justify-self: center;
     color:red;
 }
-.welcome-button{
+#welcome-page>button{
     grid-row: 2/3;
     width:150px;
     justify-self: center;
