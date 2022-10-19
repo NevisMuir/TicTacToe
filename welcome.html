@@ -9,18 +9,15 @@
 </head>
 <body>
     <div id="welcome-page">
-        <h1>Let's Play Tic Tac Toe!</h1>
-        <button class="welcome-button" id="player-button">
-            <p>Player</p>
-            <p>Vs.</p>
-            <p>Player</p>
-        </button>
-        <button class="welcome-button" id="cpu-button">
-            <p>Player</p>
-            <p>Vs.</p>
-            <p>CPU</p>
-        </button>
-        <p>coming soon!</p>
+        <form>
+            <label for="x-player">Player "X":</label>
+            <input type="text" size ="1" id="o-player" placeholder="X">
+        </form>
+        <form>
+            <label for="o-player">Player "O":</label>
+            <input type="text" size="1" id="o-player" placeholder="O">
+        </form>
+        <button id="player-start">Start</button>
     </div>
 </body>
 </html>

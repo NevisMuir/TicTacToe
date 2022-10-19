@@ -76,6 +76,12 @@
     border:solid black 3px;
     border-radius: 50px;
     margin:0 auto;
+    height:241px;
+    min-width: 356px;
+    max-width: 506px;
+}
+#cpu-button{
+    pointer-events: none;
 }
 #welcome-page>h1{
     grid-column:1/3;
@@ -88,6 +94,30 @@
 }
 #welcome-page>button{
     grid-row: 2/3;
+    
     width:150px;
     justify-self: center;
+}
+#welcome-page>form{
+    justify-self: center;
+    align-self: center;
+    display:flex;
+    flex-direction: column;
+}
+form>label{
+    margin-top:25px;
+    font-size: 25px;
+    margin-bottom:10px;
+}
+form>input{
+    font-size: 15px;
+    max-width:175px;
+    min-width:125px;
+}
+#player-start{
+    grid-column: 1/3;
+    font-size: 20px;
+    height:min-content;
+    padding:15px;
+    align-self: center;
 }
