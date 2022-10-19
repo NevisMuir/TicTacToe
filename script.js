@@ -44,6 +44,12 @@ const gameFlow = (() =>{
     let playerX = "X"
     let playerO= "O"
 
+    const displayNames = () =>{
+        let display = document.querySelector('.turn')
+        if(currentPlayer === "X"){display.textContent = playerX +"'s turn!"}
+        if(currentPlayer === "O"){display.textContent = playerO +"'s turn!"}
+    }
+
     const getNames = () =>{
             let xname = document.getElementById('x-player')
             let oname = document.getElementById('o-player')
@@ -52,8 +58,8 @@ const gameFlow = (() =>{
             let body = document.querySelector('#content')
             content.innerHTML = ""
             displayBoard.create()
-            let display = document.querySelector('.turn')
-            display.textContent = playerX +"'s Turn!"
+            
+            displayNames()
     }
 
     const symbol = () => currentPlayer
@@ -65,6 +71,7 @@ const gameFlow = (() =>{
             displayBoard.endGame(currentPlayer+" wins!")
             currentPlayer = 'X'
             gameBoard.reset()
+            
             return
         }
         //tie case
@@ -72,12 +79,11 @@ const gameFlow = (() =>{
             displayBoard.endGame("It's a tie!")
             currentPlayer = 'X'
             gameBoard.reset()
+            
             return
         }
         changePlayer()
-        let display = document.querySelector('.turn')
-        if(currentPlayer === "X"){display.textContent = playerX +"'s turn!"}
-        if(currentPlayer === "O"){display.textContent = playerO +"'s turn!"}
+        displayNames()
     }
 
     const changePlayer =() =>{
@@ -90,7 +96,8 @@ const gameFlow = (() =>{
     return{
         symbol,
         turn,
-        getNames
+        getNames,
+        displayNames
     }  
 })()
 
@@ -132,6 +139,7 @@ const displayBoard = (()=>{
 
      //displayBoard.reset erases board
      const reset = () =>{
+        gameFlow.displayNames()
         document.querySelectorAll('.boardCell').forEach((cell)=>cell.textContent="")
         document.querySelectorAll('.filled').forEach((cell)=>{
             cell.classList.remove('filled')
@@ -144,6 +152,7 @@ const displayBoard = (()=>{
 
      newGameButton.addEventListener('click',()=>{
         reset()
+        
         endDisplay.forEach((display)=>{
 
             display.classList.add('hidden')
@@ -188,7 +197,7 @@ const welcomePage = (()=>{
         inputx.setAttribute('type','text')
         inputx.setAttribute('size','1')
         inputx.setAttribute('id','x-player')
-        inputx.setAttribute('placeholder','X')
+        inputx.setAttribute('value','X')
         formx.appendChild(inputx)
         let formo = document.createElement('form')
         page.appendChild(formo)
@@ -200,7 +209,7 @@ const welcomePage = (()=>{
         inputo.setAttribute('type','text')
         inputo.setAttribute('size','1')
         inputo.setAttribute('id','o-player')
-        inputo.setAttribute('placeholder','O')
+        inputo.setAttribute('value','O')
         formo.appendChild(inputo)
         let button = document.createElement('button')
         button.setAttribute('id','player-start')
