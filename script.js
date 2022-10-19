@@ -41,6 +41,15 @@ const gameBoard = (() =>{
 
 const gameFlow = (() =>{
     let currentPlayer = 'X'
+    let playerX = "X"
+    let playerO= "O"
+
+    const getNames = () =>{
+            let xname = document.getElementById('x-player')
+            let oname = document.getElementById('o-player')
+            playerX=xname.value
+            playerO=oname.value
+    }
 
     const symbol = () => currentPlayer
 
@@ -72,7 +81,8 @@ const gameFlow = (() =>{
     }
     return{
         symbol,
-        turn
+        turn,
+        getNames
     }  
 })()
 
@@ -167,6 +177,7 @@ const welcomePage = (()=>{
         button.setAttribute('id','player-start')
         button.innerHTML="Start"
         page.appendChild(button)
+        button.addEventListener('click', gameFlow.getNames)
     }
     //creates welcome page, gives option ov PVP or PVE
     const create = ()=>{
@@ -207,15 +218,7 @@ const welcomePage = (()=>{
         cpuButton.appendChild(c3);
     }
 
-    //must be called after create
-
-
-
-
-    
-    
-
-return{create, playerInput}
+return{create}
 
 
 
