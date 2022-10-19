@@ -121,7 +121,7 @@ form>input{
     padding:15px;
     align-self: center;
 }
-#turn{
+.turn{
     text-align: center;
     font-size: 30px;
     font-weight:900;

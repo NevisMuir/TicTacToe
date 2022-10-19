@@ -52,6 +52,8 @@ const gameFlow = (() =>{
             let body = document.querySelector('#content')
             content.innerHTML = ""
             displayBoard.create()
+            let display = document.querySelector('.turn')
+            display.textContent = playerX +"'s Turn!"
     }
 
     const symbol = () => currentPlayer
@@ -73,6 +75,9 @@ const gameFlow = (() =>{
             return
         }
         changePlayer()
+        let display = document.querySelector('.turn')
+        if(currentPlayer === "X"){display.textContent = playerX +"'s turn!"}
+        if(currentPlayer === "O"){display.textContent = playerO +"'s turn!"}
     }
 
     const changePlayer =() =>{
