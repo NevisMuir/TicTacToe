@@ -87,20 +87,40 @@ const gameFlow = (() =>{
 })()
 
 const displayBoard = (()=>{
-     const emptyCells=document.querySelectorAll('.unfilled')
+     
+     
      let currentCell
      
+     const create = () =>{
+        let body = document.querySelector('body')
+        let boardBackground = document.createElement('div')
+        boardBackground.setAttribute('id','boardBackground')
+     
+        for(let i=0;i<=8;i++){
+            let cell=document.createElement('div')
+            cell.classList.add('boardCell',"unfilled")
+            boardBackground.appendChild(cell)
+            cell.setAttribute('id',i)
+        }
+        body.appendChild(boardBackground)
+        let gametext = document.createElement('div')
+        gametext.classList.add('turn')
+        body.appendChild(gametext)
+        const emptyCells=document.querySelectorAll('.unfilled')
+        emptyCells.forEach((cell)=>{
+            cell.addEventListener('click',()=>{
+                cell.textContent=gameFlow.symbol()
+                cell.classList.remove('unfilled')
+                cell.classList.add('filled')
+                currentCell=cell.getAttribute("id")
+                gameFlow.turn()
+            })
+         })
+     }
+
      const cellNum = ()=> currentCell
     //prints x or o on cell, intiates turn
-     emptyCells.forEach((cell)=>{
-        cell.addEventListener('click',()=>{
-            cell.textContent=gameFlow.symbol()
-            cell.classList.remove('unfilled')
-            cell.classList.add('filled')
-            currentCell=cell.getAttribute("id")
-            gameFlow.turn()
-        })
-     })
+     
 
      //displayBoard.reset erases board
      const reset = () =>{
@@ -130,6 +150,7 @@ const displayBoard = (()=>{
      }
 
      return{
+        create,
         cellNum,
         endGame
      }
