@@ -49,6 +49,9 @@ const gameFlow = (() =>{
             let oname = document.getElementById('o-player')
             playerX=xname.value
             playerO=oname.value
+            let body = document.querySelector('#content')
+            content.innerHTML = ""
+            displayBoard.create()
     }
 
     const symbol = () => currentPlayer
@@ -92,7 +95,7 @@ const displayBoard = (()=>{
      let currentCell
      
      const create = () =>{
-        let body = document.querySelector('body')
+        let body = document.querySelector('#content')
         let boardBackground = document.createElement('div')
         boardBackground.setAttribute('id','boardBackground')
      
@@ -202,7 +205,7 @@ const welcomePage = (()=>{
     }
     //creates welcome page, gives option ov PVP or PVE
     const create = ()=>{
-        let body = document.querySelector('body');
+        let body = document.querySelector('#content');
         
         page.setAttribute("id","welcome-page")
         body.appendChild(page)
@@ -244,4 +247,6 @@ return{create}
 
 
 })()
+
+welcomePage.create()
 
