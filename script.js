@@ -13,7 +13,7 @@ const gameBoard = (() =>{
     
     const checkWin = () =>{
         //all possible win case
-        if(array[0]== array[1]&& array[1]==array[2]||
+        if( array[0]==array[1]&& array[1]==array[2]||
             array[3]==array[4]&& array[4]==array[5]||
             array[6]==array[7]&& array[7]==array[8]||
             array[0]==array[3]&& array[3]==array[6]||
@@ -107,7 +107,7 @@ const displayBoard = (()=>{
      newGameButton.addEventListener('click',()=>{
         reset()
         endDisplay.forEach((display)=>{
-           
+
             display.classList.add('hidden')
         })
 
@@ -127,16 +127,51 @@ const displayBoard = (()=>{
 
 
 const welcomePage = (()=>{
+    //these buttons are outside the scope of .create() so that 
+    //they can be used in other functions
     let playerButton = document.createElement('button')
     playerButton.setAttribute("id","player-button")
 
     let cpuButton = document.createElement('button')
         cpuButton.setAttribute("id","cpu-button")
 
+    let page = document.createElement('div')    
 
+    const playerInput = ()=>{
+        page.innerHTML= ""
+        let formx = document.createElement('form')
+        page.appendChild(formx)
+        let labelx = document.createElement('label')
+        labelx.innerHTML = 'Player "X":'
+        labelx.setAttribute('for','x-player')
+        formx.appendChild(labelx)
+        let inputx = document.createElement('input')
+        inputx.setAttribute('type','text')
+        inputx.setAttribute('size','1')
+        inputx.setAttribute('id','x-player')
+        inputx.setAttribute('placeholder','X')
+        formx.appendChild(inputx)
+        let formo = document.createElement('form')
+        page.appendChild(formo)
+        let labelo = document.createElement('label')
+        labelo.innerHTML = 'Player "O":'
+        labelo.setAttribute('for','o-player')
+        formo.appendChild(labelo)
+        let inputo = document.createElement('input')
+        inputo.setAttribute('type','text')
+        inputo.setAttribute('size','1')
+        inputo.setAttribute('id','o-player')
+        inputo.setAttribute('placeholder','O')
+        formo.appendChild(inputo)
+        let button = document.createElement('button')
+        button.setAttribute('id','player-start')
+        button.innerHTML="Start"
+        page.appendChild(button)
+    }
+    //creates welcome page, gives option ov PVP or PVE
     const create = ()=>{
         let body = document.querySelector('body');
-        let page = document.createElement('div')
+        
         page.setAttribute("id","welcome-page")
         body.appendChild(page)
 
@@ -165,11 +200,22 @@ const welcomePage = (()=>{
         playerButton.appendChild(p1);
         playerButton.appendChild(p2);
         playerButton.appendChild(p3);
+        //creates new page on click
+        playerButton.addEventListener('click', playerInput)
         cpuButton.appendChild(c1);
         cpuButton.appendChild(c2);
         cpuButton.appendChild(c3);
     }
-return{create,}
+
+    //must be called after create
+
+
+
+
+    
+    
+
+return{create, playerInput}
 
 
 
