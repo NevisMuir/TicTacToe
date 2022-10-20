@@ -40,6 +40,7 @@ const gameBoard = (() =>{
 })()
 
 const gameFlow = (() =>{
+    let computerStatus = false
     let currentPlayer = 'X'
     let playerX = "X"
     let playerO= "O"
@@ -60,6 +61,7 @@ const gameFlow = (() =>{
             let oname = document.getElementById('o-player')
             if(xname.value === "")xname.value= "X"
             if(oname.value === "")oname.value= "O"
+            if(gameFlow.computerStatus===true)oname.value="Computer"
             playerX=xname.value
             playerO=oname.value
             content.innerHTML = ""
@@ -92,6 +94,11 @@ const gameFlow = (() =>{
         }
         changePlayer()
         displayNames()
+        if(gameFlow.computerStatus==true&&currentPlayer==="O"){
+            
+            setTimeout(function(){computer.turn()},250)
+            
+        }
     }
 
     const changePlayer =() =>{
@@ -106,7 +113,8 @@ const gameFlow = (() =>{
         turn,
         getNames,
         displayNames,
-        playerReset
+        playerReset,
+        computerStatus
     }  
 })()
 
@@ -164,6 +172,7 @@ const displayBoard = (()=>{
         endDisplay.forEach((display)=>{
             display.classList.add('hidden')
         })
+        gameFlow.computerStatus=false
         body.textContent=""
         welcomePage.create()
         gameFlow.playerReset()
@@ -221,12 +230,19 @@ const welcomePage = (()=>{
         labelo.innerHTML = 'Player "O":'
         labelo.setAttribute('for','o-player')
         formo.appendChild(labelo)
-        let inputo = document.createElement('input')
-        inputo.setAttribute('type','text')
-        inputo.setAttribute('size','1')
-        inputo.setAttribute('id','o-player')
-        inputo.setAttribute('placeholder','O')
-        formo.appendChild(inputo)
+        if(gameFlow.computerStatus ===false){
+            let inputo = document.createElement('input')
+            inputo.setAttribute('type','text')
+            inputo.setAttribute('size','1')
+            inputo.setAttribute('id','o-player')
+            inputo.setAttribute('placeholder','O')
+            formo.appendChild(inputo)
+        }else{
+            let compo = document.createElement('p')
+            compo.setAttribute('id','o-player')
+            compo.textContent = "Computer"
+            formo.appendChild(compo)
+        }
         let button = document.createElement('button')
         button.setAttribute('id','player-start')
         button.innerHTML="Start"
@@ -256,7 +272,7 @@ const welcomePage = (()=>{
         page.appendChild(cpuButton)
 
         let soon=document.createElement('p')
-        soon.textContent = "coming soon!"
+        soon.textContent = " "
         page.appendChild(soon)
 
         let p1 = document.createElement('p')
@@ -279,6 +295,8 @@ const welcomePage = (()=>{
         cpuButton.appendChild(c1);
         cpuButton.appendChild(c2);
         cpuButton.appendChild(c3);
+        cpuButton.addEventListener('click',()=>{gameFlow.computerStatus=true})
+        cpuButton.addEventListener('click',playerInput)
     }
 
 return{create}
@@ -299,6 +317,7 @@ const computer = (()=>{
         let move = empties[Math.floor(Math.random()*empties.length)]
         document.getElementById(move).click()
     }
+    
 
     return{
         turn,
