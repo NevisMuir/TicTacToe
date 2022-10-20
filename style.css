@@ -1,4 +1,6 @@
-
+body{
+    margin:0;
+}
 #boardBackground{
     display:grid;
     background-color: darkcyan;
@@ -6,7 +8,7 @@
     grid-template-rows:repeat(3,1fr);
     aspect-ratio: 1/1;
     max-height:500px;
-    min-width:400px;
+    min-width:350px;
     max-width:500px;
     gap:5px;
     margin:50px auto;
@@ -75,10 +77,9 @@
     max-width:500px;
     border:solid black 3px;
     border-radius: 50px;
-    margin:0 auto;
+    margin:50px auto;
     height:241px;
-    min-width: 356px;
-    max-width: 506px;
+    
 }
 
 #welcome-page>h1{
