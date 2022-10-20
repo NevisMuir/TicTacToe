@@ -73,7 +73,10 @@ const gameFlow = (() =>{
         gameBoard.write(displayBoard.cellNum())
         //win case
         if(gameBoard.checkWin()){
-            displayBoard.endGame(currentPlayer+" wins!")
+            let winner
+            if(currentPlayer==="X") winner = playerX
+            if(currentPlayer==="O")winner = playerO
+            displayBoard.endGame(winner+" wins!")
             currentPlayer = 'X'
             gameBoard.reset()
             
@@ -210,7 +213,7 @@ const welcomePage = (()=>{
         inputx.setAttribute('type','text')
         inputx.setAttribute('size','1')
         inputx.setAttribute('id','x-player')
-        inputx.setAttribute('value','X')
+        inputx.setAttribute('placeholder','X')
         formx.appendChild(inputx)
         let formo = document.createElement('form')
         page.appendChild(formo)
@@ -222,7 +225,7 @@ const welcomePage = (()=>{
         inputo.setAttribute('type','text')
         inputo.setAttribute('size','1')
         inputo.setAttribute('id','o-player')
-        inputo.setAttribute('value','O')
+        inputo.setAttribute('placeholder','O')
         formo.appendChild(inputo)
         let button = document.createElement('button')
         button.setAttribute('id','player-start')
