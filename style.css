@@ -9,7 +9,8 @@ html *{
 }
 body{
     margin:0;
-    background-image: url("retro-70s-and-80s-color-palette-mid-century-minimalist-abstract-art-ocean-waves-free-vector.webp");
+    background: url("retro-70s-and-80s-color-palette-mid-century-minimalist-abstract-art-ocean-waves-free-vector.webp") no-repeat top center fixed;
+    background-size:cover;
     
 }
 
@@ -30,14 +31,16 @@ body{
 }
 .boardCell{
     display:grid;
-    background-color: white;
+    background-color: purple;
     justify-items:center;
     align-items: center;
     font-size:90px;
+    font-weight:900;
+    color:white;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .boardCell:hover{
-    background-color: lightgrey;
+    background-color: plum;
 }
 .unfilled{
     cursor:grab;
@@ -162,4 +165,5 @@ form>p{
     margin:auto;
     padding:10px 20px;
     border-radius:50px;
+    background-color:burlywood;
 }
