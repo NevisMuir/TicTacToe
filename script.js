@@ -58,6 +58,8 @@ const gameFlow = (() =>{
     const getNames = () =>{
             let xname = document.getElementById('x-player')
             let oname = document.getElementById('o-player')
+            if(xname.value === "")xname.value= "X"
+            if(oname.value === "")oname.value= "O"
             playerX=xname.value
             playerO=oname.value
             content.innerHTML = ""
