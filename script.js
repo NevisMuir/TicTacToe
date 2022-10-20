@@ -287,5 +287,24 @@ return{create}
 
 })()
 
+const computer = (()=>{
+
+    const turn = ()=>{
+        let emptyCells = document.querySelectorAll('.unfilled')
+        //writing empty cell ids to an array.
+        let empties = []
+        emptyCells.forEach((cell)=>{
+            empties.push(cell.getAttribute('id'))
+        })
+        let move = empties[Math.floor(Math.random()*empties.length)]
+        document.getElementById(move).click()
+    }
+
+    return{
+        turn,
+    }
+
+})()
+
 welcomePage.create()
 
