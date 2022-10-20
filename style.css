@@ -62,16 +62,28 @@ body{
     justify-content:center;
     align-items: center;
     display:grid;
+    background-image: url("2abe18d799b91b32506f988cffec3b83.png");
 }
 #endgame>p{
     font-size:40px;
     margin:auto;
+    color:white;
+}
+button{
+    background-color: burlywood;
+    border:solid 3px darkgoldenrod;
+    border-radius: 25%;
 }
 #endgame>button{
     height:75px;
     width:150px;
     margin:auto;
     font-size:25px;
+    
+}
+button:hover{
+    background-color:saddlebrown;
+    cursor:grab;
 }
 #cover{
     height:100%;
@@ -93,13 +105,13 @@ body{
     border-radius: 50px;
     margin:50px auto;
     height:241px;
-    background-color: whitesmoke;
-    
+    background-image: url("2abe18d799b91b32506f988cffec3b83.png");
 }
 
 #welcome-page>h1{
     grid-column:1/3;
     justify-self: center;
+    color:white;
     
 }
 
@@ -122,11 +134,13 @@ form>label{
     margin-top:25px;
     font-size: 25px;
     margin-bottom:10px;
+    color:white;
 }
 form>input{
     font-size: 15px;
     max-width:175px;
     min-width:125px;
+    background-color: cornflowerblue;
 }
 form>p{
     margin:0;
