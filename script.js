@@ -96,7 +96,7 @@ const gameFlow = (() =>{
         displayNames()
         if(gameFlow.computerStatus==true&&currentPlayer==="O"){
             
-            setTimeout(function(){computer.turn()},250)
+            computer.turn()
             
         }
     }
@@ -312,10 +312,18 @@ const computer = (()=>{
         //writing empty cell ids to an array.
         let empties = []
         emptyCells.forEach((cell)=>{
-            empties.push(cell.getAttribute('id'))
+            empties.push(cell.getAttribute('id'));
+            cell.classList.add('filled')
         })
         let move = empties[Math.floor(Math.random()*empties.length)]
-        document.getElementById(move).click()
+        function freeze(){
+            emptyCells.forEach((cell)=>{
+                cell.classList.remove('filled')
+            })
+            document.getElementById(move).click()
+        }
+        setTimeout(freeze,1500)
+        
     }
     
 

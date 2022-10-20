@@ -46,7 +46,7 @@ body{
     cursor:grab;
 }
 .filled{
-    pointer-events: none;
+    pointer-events: none !important;
 }
 .hidden{
     display:none !important;
@@ -160,7 +160,7 @@ form>p{
 .turn{
     text-align: center;
     font-size: 30px;
-    background-color: white;
+    
     width:fit-content;
     margin:auto;
     padding:10px 20px;
