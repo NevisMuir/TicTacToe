@@ -50,15 +50,18 @@ const gameFlow = (() =>{
         if(currentPlayer === "O"){display.textContent = playerO +"'s turn!"}
     }
 
+    const playerReset = ()=>{
+        playerX = "X"
+        playerO = "O"
+    }
+
     const getNames = () =>{
             let xname = document.getElementById('x-player')
             let oname = document.getElementById('o-player')
             playerX=xname.value
             playerO=oname.value
-            let body = document.querySelector('#content')
             content.innerHTML = ""
             displayBoard.create()
-            
             displayNames()
     }
 
@@ -97,17 +100,18 @@ const gameFlow = (() =>{
         symbol,
         turn,
         getNames,
-        displayNames
+        displayNames,
+        playerReset
     }  
 })()
 
 const displayBoard = (()=>{
-     
+     let body=document.querySelector('#content')
      
      let currentCell
      
      const create = () =>{
-        let body = document.querySelector('#content')
+        
         let boardBackground = document.createElement('div')
         boardBackground.setAttribute('id','boardBackground')
      
@@ -146,9 +150,20 @@ const displayBoard = (()=>{
             cell.classList.add('unfilled')
         })
      }
-     const newGameButton=document.querySelector('button')
+     const newGameButton=document.querySelector('#rematch')
+     const resetButton=document.querySelector('#reset')
      const endText=document.querySelector('#endgame>p')
      const endDisplay = document.querySelectorAll('.hidden')
+
+     resetButton.addEventListener('click',()=>{
+        endDisplay.forEach((display)=>{
+            display.classList.add('hidden')
+        })
+        body.textContent=""
+        welcomePage.create()
+        gameFlow.playerReset()
+
+     })
 
      newGameButton.addEventListener('click',()=>{
         reset()
@@ -177,11 +192,7 @@ const displayBoard = (()=>{
 const welcomePage = (()=>{
     //these buttons are outside the scope of .create() so that 
     //they can be used in other functions
-    let playerButton = document.createElement('button')
-    playerButton.setAttribute("id","player-button")
-
-    let cpuButton = document.createElement('button')
-        cpuButton.setAttribute("id","cpu-button")
+    
 
     let page = document.createElement('div')    
 
@@ -217,13 +228,22 @@ const welcomePage = (()=>{
         page.appendChild(button)
         button.addEventListener('click', gameFlow.getNames)
     }
+
+
     //creates welcome page, gives option ov PVP or PVE
+
+    
     const create = ()=>{
         let body = document.querySelector('#content');
         
         page.setAttribute("id","welcome-page")
+        page.textContent=""
         body.appendChild(page)
+        let playerButton = document.createElement('button')
+        playerButton.setAttribute("id","player-button")
 
+        let cpuButton = document.createElement('button')
+        cpuButton.setAttribute("id","cpu-button")
         let h1 = document.createElement('h1')
         h1.textContent = "Let's Play Tic Tac Toe!"
         page.appendChild(h1)       
